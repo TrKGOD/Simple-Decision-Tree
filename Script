@@ -1,0 +1,106 @@
+# Checkpoint CFS
+# Feito por Tarek Khalil Ayache
+# Python Script for Body Health
+# Version 1.0
+
+import time
+from pyfiglet import Figlet
+from sklearn import tree
+
+# Alguns valores importantes.
+space = "-----------------------------------------------------------------------"
+saudavel = 1
+normal = 2
+naosaudavel = 3
+
+exercicios = [[3, 3, 3, 3, 3], [2, 2, 2, 2, 2], [1, 1, 1, 1, 1]]
+saude = [saudavel, normal, naosaudavel]
+
+teste = tree.DecisionTreeClassifier()
+teste = teste.fit(exercicios, saude)
+
+# Introdução do programa explicando como funciona + logo bonita usando pyfiglet
+print(space)
+f = Figlet(font='slant')
+print(f.renderText('body scanner'))
+print(space)
+time.sleep(2)
+print("Olá e seja bem vindo ao programa de BodyScanner 1.0")
+time.sleep(0.5)
+print("O programa irá solicitar alguns dados sobre você.")
+time.sleep(0.5)
+print("Após responder as perguntas será feito um relatório preciso sobre sua saúde no futuro!")
+time.sleep(0.5)
+input("Digite qualquer carácter para continuar.")
+print(space)
+
+# Começo dos textos que pegam os dados do usuário + condições.
+
+print("Pergunta 1: Quantas horas de sono você tem por dia?")
+time.sleep(1)
+print("(1)- mais de 8 horas ou 8 horas.")
+time.sleep(1)
+print("(2)- de 4 a 7 horas por dia")
+time.sleep(1)
+print("(3)- de 0 a 3 horas por dia")
+time.sleep(1)
+sono = int(input("Responda com 1,2 ou 3 de acordo com a alternativa que se encaixa."))
+
+print(space)
+
+print("Muito bem, próxima pergunta...")
+time.sleep(1)
+print("Com que frequencia come frutas?")
+time.sleep(1)
+print("(1)- todos os dias.")
+time.sleep(1)
+print("(2)- 2 à 6 vezes por semana.")
+time.sleep(1)
+print("(3)- <2 por semana.")
+fruta = int(input("Responda com 1,2 ou 3 de acordo com a alternativa que se encaixa."))
+print(space)
+
+print("Muito bem, próxima pergunta...")
+time.sleep(1)
+print("Com que frequencia faz 3 refeições por dia??")
+time.sleep(1)
+print("(1)- todos os dias.")
+time.sleep(1)
+print("(2)- 2 à 6 vezes por semana.")
+time.sleep(1)
+print("(3)- <2 por semana.")
+refeicao = int(input("Responda com 1,2 ou 3 de acordo com a alternativa que se encaixa."))
+print(space)
+
+print("Muito bem, próxima pergunta...")
+time.sleep(1)
+print("Com que frequencia você toma sol?")
+time.sleep(1)
+print("(1)- todos os dias.")
+time.sleep(1)
+print("(2)- 2 à 6 vezes por semana.")
+time.sleep(1)
+print("(3)- <2 por semana.")
+sol = int(input("Responda com 1,2 ou 3 de acordo com a alternativa que se encaixa."))
+print(space)
+
+print("Muito bem, próxima pergunta...")
+time.sleep(1)
+print("Com que frequencia você faz atividades físicas?")
+time.sleep(1)
+print("(1)- todos os dias.")
+time.sleep(1)
+print("(2)- 2 à 6 vezes por semana.")
+time.sleep(1)
+print("(3)- <2 por semana.")
+atividade = int(input("Responda com 1,2 ou 3 de acordo com a alternativa que se encaixa."))
+print(space)
+
+result = teste.predict([[sono, sol, refeicao, fruta, atividade]])
+if result == 1:
+    print("Você será uma pessoa saudável, parabéns!")
+elif result == 2:
+    print("Você será uma pessoa com a saúde na média.")
+elif result == 3:
+    print("Você será uma pessoa não saudável, melhore!")
+    
